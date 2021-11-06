@@ -1,0 +1,62 @@
+<% layout('layouts/boilerplate') %>
+
+<div class="row">
+	<h1 class="">Add a new campground</h1>
+	<p>Complete the form below to add a new grounds to the system.</p>
+</div>
+
+<hr/>
+
+<section>
+
+	<div class="row card-title">
+		<div class="col-6">
+			<form class="validated-form" action="/campgrounds" method="POST" novalidate>
+				<div class="mb-3">
+					<label class="form-label" for="title">Title</label>
+					<input class="form-control" type="text" name="campground[title]" id="title" required>
+					<div class="valid-feedback">All good</div>
+				</div>
+				<div class="mb-3">
+					<label class="form-label" for="location">Location</label>
+					<input class="form-control" type="text" name="campground[location]" id="location" required>
+					<div class="valid-feedback">All good</div>
+				</div>
+				<label class="form-label" for="price">Price per night</label>
+				<div class="input-group mb-3">
+					<span class="input-group-text">£</span>
+					<input class="form-control" type="number"name="campground[price]" id="price" step=".01" placeholder="0.00" required>
+					<div class="valid-feedback">All good</div>
+				</div>
+
+				<label class="form-label" for="image">Image URL</label>
+				<div class="input-group mb-3">
+					<input type="text" class="form-control text-center" name="campground[image]" id="image" placeholder="Image URL">
+					<div class="valid-feedback">All good</div>
+				 	<button class="btn btn-outline-secondary" type="button" id="button-addon2">Upload</button>
+				</div>
+
+				<div class="mb-3">
+					<label class="form-label" for="description">Description</label>
+					<textarea class="form-control" name="campground[description]" id="description" placeholder="Add a description for new guests"></textarea>
+				</div>	
+				
+				<input type="number" name="campground[memberPrice]" id="memberPrice" hidden> 
+				
+				<button class="d-inline btn btn-success fw-bold">Add campground</button>
+				<a class="d-inline btn btn-outline-danger fw-bold" href="/campgrounds">Cancel</a>
+				<br>
+			</form>	
+		</div>
+		
+</section>
+
+<script>
+	const sample = array => array[Math.floor(Math.random() * array.length)];
+	const discounts = [0.8, 0.75, 0.7, 0.65, 0.6];
+	const price = document.querySelector('#price');
+	const memberPrice = document.querySelector('#memberPrice');	
+	price.addEventListener('focusout', (e) => {
+		memberPrice.value = (price.value * sample(discounts)).toFixed(2);
+	})
+</script>

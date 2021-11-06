@@ -1,0 +1,40 @@
+<% layout('layouts/boilerplate') %>
+
+<h1>All campgrounds</h1>
+<p><a class="btn btn-warning mt-2" href="/campgrounds/new">Add a new campground</a></p>
+<hr/>
+
+<section>
+	<% for (let campground of campgrounds) { %>
+		<div class="card mb-3 px-3 py-2">
+			<div class="row">
+				<div class="col-md-4">
+					<img class="img-fluid" src="<%= campground.image %>" cl>
+				</div>
+
+				<div class="col-md-8">
+					<div class="card-body">
+						<h4 class="card-title"><%= campground.title %></h4>
+						<p class="text-muted"><%= campground.location %></p>
+						<p class="card-text "><%= campground.description %></p>
+						<a class="btn btn-lg btn-danger" href="/campgrounds/<%= campground._id %>">
+							£<% if (campground.price % 1 == 0) { %>
+								<%= campground.price %> 
+							<% } else { %>
+								<%= campground.price.toFixed(2) %>	
+							<% } %>
+						</a>						
+						<a class="btn btn-lg btn-outline-info" href="/campgrounds/<%= campground._id %>?price=member">
+							£<% if (campground.memberPrice % 1 == 0) { %>
+								<%= campground.memberPrice %> 
+							<% } else { %>
+								<%= campground.memberPrice.toFixed(2) %>	
+							<% } %>
+						</a>
+					</div>
+				</div>
+			</div>
+		</div>
+
+	<% } %>
+</section>
