@@ -1,0 +1,19 @@
+<script type="text/javascript">
+	const sample = array => array[Math.floor(Math.random() * array.length)];
+	const discounts = [0.8, 0.75, 0.7, 0.65, 0.6];
+	const price = document.querySelector('#price');
+	const campImg = document.querySelector('#camp-img-prev');
+	const newImgURL = document.querySelector('#image');
+	const updateBtn = document.querySelector('#update-btn');
+	const memberPrice = document.querySelector('#memberPrice');
+
+	price.addEventListener('focusout', (e) => {
+		memberPrice.value = (price.value * sample(discounts)).toFixed(2);
+	});
+
+	updateBtn.addEventListener('click', (e) => {
+		campImg.classList.add('img-thumbnail', 'w-50', 'p-3');
+		campImg.src = newImgURL.value
+	})
+
+</script>

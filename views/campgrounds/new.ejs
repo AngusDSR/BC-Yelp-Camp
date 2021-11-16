@@ -25,7 +25,7 @@
 				<label class="form-label" for="price">Price per night</label>
 				<div class="input-group mb-3">
 					<span class="input-group-text">£</span>
-					<input class="form-control" type="number"name="campground[price]" id="price" step=".01" placeholder="0.00" required>
+					<input class="form-control" type="number" name="campground[price]" id="price" placeholder="0.00" step="0.01" required>
 					<div class="valid-feedback">All good</div>
 				</div>
 
@@ -33,7 +33,10 @@
 				<div class="input-group mb-3">
 					<input type="text" class="form-control text-center" name="campground[image]" id="image" placeholder="Image URL">
 					<div class="valid-feedback">All good</div>
-				 	<button class="btn btn-outline-secondary" type="button" id="button-addon2">Upload</button>
+				 	<button class="btn btn-outline-secondary" type="button" id="update-btn">Preview</button>
+				</div>
+				<div class="input-group mb-3">
+					<img class="" src="" id="camp-img-prev">
 				</div>
 
 				<div class="mb-3">
@@ -51,12 +54,4 @@
 		
 </section>
 
-<script>
-	const sample = array => array[Math.floor(Math.random() * array.length)];
-	const discounts = [0.8, 0.75, 0.7, 0.65, 0.6];
-	const price = document.querySelector('#price');
-	const memberPrice = document.querySelector('#memberPrice');	
-	price.addEventListener('focusout', (e) => {
-		memberPrice.value = (price.value * sample(discounts)).toFixed(2);
-	})
-</script>
+<%- include('../partials/formLogic') %>

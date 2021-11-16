@@ -1,0 +1,13 @@
+<% layout('layouts/boilerplate') %>
+<h3>Uh-oh, something went wrong</h3>
+<div class="row">
+    <div class="col-8 mt-3">
+        <div class="alert alert-danger" role="alert">
+			<h4 class="alert-heading" role="alert"><%= err.statusCode %>: <%= err.message %></h4><br>
+		  	<p class="small"><%= err.stack %></p>
+		  	</p>
+		  	<hr>
+		  	<p class="mb-0"> Stop. Take 5 then try again when you're a bit calmer.</p>
+          </div>
+    </div>
+</div>
